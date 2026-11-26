@@ -21,7 +21,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 # Paste your Gemini API Key inside the quotes below
-GEMINI_API_KEY = os.eviron.get("GEMINI_API_KEY", "")
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
 client = genai.Client(api_key=GEMINI_API_KEY)
 
 
