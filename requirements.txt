@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+python-multipart
+google-genai
+opencv-python-headless
+pypdf
+numpy
+pillow
+razorpay
