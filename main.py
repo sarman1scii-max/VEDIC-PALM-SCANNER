@@ -10,7 +10,13 @@ from google import genai
 from google.genai import types
 import numpy as np
 from pypdf import PdfReader
-
+from PIL import Image
+import io
+try:
+    import pillow_heif
+    pillow_heif.register_heif_opener()
+except Exception:
+    pass
 app = FastAPI(title="Master AI Hastrekha & Samudrik Shastra Scanner")
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -51,7 +57,12 @@ ALL_PDF_KNOWLEDGE = load_all_pdfs_from_folder()
 def prepare_image_for_gemini(contents: bytes, filename: str):
     np_arr = np.frombuffer(contents, np.uint8)
     img = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
-
+    if img is None:
+            try:
+                pil_img = Image.open(io.BytesIO(contents)).convert("RGB")
+            img = cv2.cvtColor(np.array(pil_img), cv2.COLOR_RGB2BGR)
+            except Exception:
+                return None, None
     if img is not None:
         orig_h, orig_w = img.shape[:2]
         target_w = 1280
