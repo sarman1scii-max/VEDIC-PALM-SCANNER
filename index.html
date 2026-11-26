@@ -19,6 +19,7 @@ label { display:block; color:#f5b942; font-weight:bold; margin-bottom:5px; font-
 select, input { width:100%; padding:11px; border-radius:8px; border:1px solid #382f63; background:#0c091a; color:#fff; font-size:15px; box-sizing:border-box; }
 .upbox { border:2px dashed rgba(245,185,66,0.4); border-radius:10px; padding:15px; text-align:center; background:#0c091a; }
 .upbox img { max-height:140px; margin:10px auto 0; display:none; border-radius:8px; border:1px solid #f5b942; }
+.img-note { font-size:12px; color:#4ade80; margin-top:6px; display:none; }
 .btn-main { width:100%; padding:15px; background:linear-gradient(135deg, #d9931e, #f5b942); color:#000; font-weight:bold; font-size:17px; border:none; border-radius:10px; cursor:pointer; margin-top:10px; }
 .btn-main:disabled { opacity:0.6; }
 #loader { display:none; text-align:center; color:#f5b942; margin:25px 0; padding:20px; background:#141026; border-radius:12px; border:1px solid #f5b942; font-size:17px; }
@@ -78,8 +79,18 @@ footer a { color:#f5b942; margin:0 10px; text-decoration:none; }
   </div>
   <div id="cBox" style="display:none; margin-bottom:15px;"><label>अपना प्रश्न लिखें *</label><input type="text" id="cInput" placeholder="अपना सवाल टाइप करें..."></div>
   <div class="row">
-    <div class="upbox"><label>दाहिने हाथ की फोटो (Right Hand) *</label><input type="file" id="rHand" accept="image/*" onchange="showImg(this,'rImg')"><img id="rImg"></div>
-    <div class="upbox"><label>बाएं हाथ की फोटो (Left Hand) [वैकल्पिक]</label><input type="file" id="lHand" accept="image/*" onchange="showImg(this,'lImg')"><img id="lImg"></div>
+    <div class="upbox">
+      <label>दाहिने हाथ की फोटो (Right Hand) *</label>
+      <input type="file" id="rHand" accept="image/*,.heic,.heif" onchange="prepareHDPhoto(this,'rImg','rNote','right')">
+      <img id="rImg">
+      <div id="rNote" class="img-note"></div>
+    </div>
+    <div class="upbox">
+      <label>बाएं हाथ की फोटो (Left Hand) [वैकल्पिक]</label>
+      <input type="file" id="lHand" accept="image/*,.heic,.heif" onchange="prepareHDPhoto(this,'lImg','lNote','left')">
+      <img id="lImg">
+      <div id="lNote" class="img-note"></div>
+    </div>
   </div>
   <button class="btn-main" id="btn" onclick="scanNow()">✨ हस्तरेखा स्कैन करें (3-Day Free Trial)</button>
 </div>
@@ -151,6 +162,3 @@ footer a { color:#f5b942; margin:0 10px; text-decoration:none; }
     <h3 style="color:#f5b942; margin:5px 0; font-size:21px;">आचार्य श्रवण व्यास (Banti Vyas)</h3>
     <p style="color:#d4cde8; font-size:13px; margin:4px 0 12px 0;">संस्थापक एवं निर्माता — Vedic Palm Scanner</p>
     <p style="color:#f3f1f8; font-size:14px; line-height:1.6; max-width:650px; margin:0 auto 16px auto;">
-      ✨ <b>विशेष सेवाएं:</b> वैदिक ज्योतिष परामर्श, विशेष अनुष्ठान, नवग्रह शांति, दोष निवारण उपाय, मंत्र जप एवं संपूर्ण शास्त्रीय पूजा-पाठ हेतु सीधे संपर्क करें।
-    </p>
-    <div style="display:flex; justify-content:center; flex-wrap:wrap; gap:12px;">
