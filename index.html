@@ -298,12 +298,13 @@ function downloadPDF() {
 }
 
 function shareWA() {
-  const name = document.getElementById('uName').value.trim() || 'मैंने';
+  const rawName = document.getElementById('uName').value.trim();
+  const displayName = rawName ? `${rawName} ने` : 'मैंने';
   const summary = report && report.swabhav_vyavahar_aur_antarmann
     ? (typeof report.swabhav_vyavahar_aur_antarmann === 'string' ? report.swabhav_vyavahar_aur_antarmann : report.swabhav_vyavahar_aur_antarmann.hindi).slice(0, 180)
     : '';
-  const text = `🔮 *Vedic Palm Scanner* पर ${name} अपनी हथेली की रेखाओं का विश्लेषण करवाया!\n\n✨ *मुख्य झलक:* ${summary}...\n\nआप भी 3 दिन के *Free Trial* में अपनी हथेली स्कैन करें:\n${window.location.origin}`;
-  window.open('https://whatsapp.com' + encodeURIComponent(text), '_blank');
+  const text = `🔮 *Vedic Palm Scanner* पर ${displayName} अपनी हथेली की रेखाओं का विश्लेषण करवाया!\n\n✨ *मुख्य झलक:* ${summary}...\n\nआप भी 3 दिन के *Free Trial* में अपनी हथेली स्कैन करें:\n${window.location.origin}`;
+window.open('https://' + 'api.whatsapp.com' + '/send?text=' + encodeURIComponent(text), '_blank');
 }
 </script>
 </body>
