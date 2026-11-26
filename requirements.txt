@@ -7,3 +7,4 @@ pypdf
 numpy
 pillow
 razorpay
+pillow-heif
