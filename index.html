@@ -155,10 +155,297 @@ footer a { color:#f5b942; margin:0 10px; text-decoration:none; }
 </div>
 
 <footer>
-  <div style="background:#141026; border:1px solid #f5b942; border-radius:14px; padding:22px 15px; margin-bottom:20px; box-shadow:0 8px 25px rgba(0,0,0,0.5);">
+  <div style="background:#141026; border:2px solid #f5b942; border-radius:14px; padding:24px 16px; margin-bottom:20px; box-shadow:0 8px 25px rgba(0,0,0,0.6);">
     <div style="display:inline-block; background:rgba(245,185,66,0.15); border:1px solid #f5b942; color:#f5b942; padding:4px 14px; border-radius:20px; font-size:12px; margin-bottom:10px;">
-      🕉️ वैदिक मार्गदर्शन एवं विशेष अनुष्ठान
+      🕉️ वैदिक ज्योतिष एवं विशेष अनुष्ठान केंद्र
     </div>
-    <h3 style="color:#f5b942; margin:5px 0; font-size:21px;">आचार्य श्रवण व्यास (Banti Vyas)</h3>
-    <p style="color:#d4cde8; font-size:13px; margin:4px 0 12px 0;">संस्थापक एवं निर्माता — Vedic Palm Scanner</p>
-    <p style="color:#f3f1f8; font-size:14px; line-height:1.6; max-width:650px; margin:0 auto 16px auto;">
+    <h3 style="color:#f5b942; margin:5px 0; font-size:22px;">आचार्य श्रवण व्यास (Banti Vyas)</h3>
+    <p style="color:#d4cde8; font-size:13px; margin:4px 0 14px 0;">संस्थापक एवं निर्माता — Vedic Palm Scanner</p>
+    
+    <div style="background:#0c091a; border:1px solid #382f63; border-radius:10px; padding:14px; max-width:680px; margin:0 auto 16px auto; text-align:left; font-size:13.5px; line-height:1.7; color:#f3f1f8;">
+      <div style="color:#f5b942; font-weight:bold; margin-bottom:6px; text-align:center;">✨ हमारी प्रमुख शास्त्रीय सेवाएं एवं अनुष्ठान ✨</div>
+      <div>🔸 <b>नवग्रह शांति एवं दोष निवारण:</b> राहु-केतु शांति, कालसर्प दोष, मंगल दोष, शनि साढ़ेसाती एवं पितृ दोष निवारण।</div>
+      <div>🔸 <b>विशेष वैदिक अनुष्ठान व मंत्र जप:</b> महामृत्युंजय जप, बगलामुखी अनुष्ठान, रुद्राभिषेक, चंडी पाठ एवं लक्ष्मी-कुबेर यज्ञ।</div>
+      <div>🔸 <b>व्यक्तिगत परामर्श एवं उपाय:</b> हस्तरेखा व जन्मकुंडली विश्लेषण, विवाह बाधा, व्यापार वृद्धि एवं संतान सुख हेतु अचूक शास्त्रीय उपाय।</div>
+    </div>
+
+    <p style="color:#4ade80; font-weight:bold; font-size:15px; margin-bottom:14px;">📞 सीधा संपर्क सूत्र: +91 79993 96575</p>
+
+    <div style="display:flex; justify-content:center; flex-wrap:wrap; gap:12px;">
+      <a href="#" onclick="window.open('https://' + '://whatsapp.com' + '/send?phone=917999396575&text=' + encodeURIComponent('नमस्ते आचार्य श्रवण व्यास जी, मैंने Vedic Palm Scanner पर अपनी रिपोर्ट देखी। मुझे अनुष्ठान / ग्रह शांति / ज्योतिष परामर्श के लिए बात करनी है।'), '_blank'); return false;" style="background:#25D366; color:#000; padding:12px 22px; border-radius:8px; font-weight:bold; text-decoration:none; font-size:14px;">
+        📲 WhatsApp पर बात करें
+      </a>
+      <a href="tel:+917999396575" style="background:transparent; border:1px solid #f5b942; color:#f5b942; padding:12px 22px; border-radius:8px; font-weight:bold; text-decoration:none; font-size:14px;">
+        📞 कॉल करें: 7999396575
+      </a>
+    </div>
+  </div>
+
+  <p>© 2026 Vedic Palm Scanner | आचार्य श्रवण व्यास (Banti Vyas) | All Rights Reserved</p>
+  <p style="margin-top:8px;">
+    <a href="#" onclick="alert('Privacy Policy: आपकी हथेली की फोटो केवल AI विश्लेषण के लिए उपयोग होती है और सुरक्षित रहती है।')">Privacy Policy</a> |
+    <a href="#" onclick="alert('Terms: यह सेवा वैदिक सामुद्रिक शास्त्र एवं आध्यात्मिक मार्गदर्शन पर आधारित है।')">Terms & Conditions</a> |
+    <a href="#" onclick="alert('Refund Policy: डिजिटल रिपोर्ट अनलॉक होने के बाद रिफंड लागू नहीं है। सहायता हेतु संपर्क करें।')">Refund Policy</a>
+  </p>
+</footer>
+</div>
+<script>
+let report = null, lang = 'hi', unlocked = false;
+let hdRightBlob = null, hdLeftBlob = null;
+
+function prepareHDPhoto(inp, imgId, noteId, side) {
+  const f = inp.files && inp.files.item(0);
+  if (!f) return;
+  const img = document.getElementById(imgId);
+  const note = document.getElementById(noteId);
+  note.style.display = 'block';
+  note.style.color = '#f5b942';
+  note.innerText = '⏳ HD रेखाओं के लिए फोटो तैयार हो रही है...';
+
+  const reader = new FileReader();
+  reader.onload = function(ev) {
+    const tempImg = new Image();
+    tempImg.onload = function() {
+      const maxDim = 1400;
+      let w = tempImg.width, h = tempImg.height;
+      if (w > maxDim || h > maxDim) {
+        if (w > h) { h = Math.round(h * maxDim / w); w = maxDim; }
+        else { w = Math.round(w * maxDim / h); h = maxDim; }
+      }
+      const canvas = document.createElement('canvas');
+      canvas.width = w;
+      canvas.height = h;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(tempImg, 0, 0, w, h);
+
+      canvas.toBlob(function(blob) {
+        if (blob) {
+          if (side === 'right') hdRightBlob = blob;
+          else hdLeftBlob = blob;
+          img.src = URL.createObjectURL(blob);
+          img.style.display = 'block';
+          note.style.color = '#4ade80';
+          note.innerText = '✅ HD फोटो तैयार है (' + Math.round(blob.size / 1024) + ' KB)';
+        } else {
+          if (side === 'right') hdRightBlob = f;
+          else hdLeftBlob = f;
+          img.src = ev.target.result;
+          img.style.display = 'block';
+          note.style.color = '#4ade80';
+          note.innerText = '✅ फोटो लोड हो गई है';
+        }
+      }, 'image/jpeg', 0.92);
+    };
+    tempImg.onerror = function() {
+      if (side === 'right') hdRightBlob = f;
+      else hdLeftBlob = f;
+      img.style.display = 'none';
+      note.style.color = '#4ade80';
+      note.innerText = '✅ फोटो सेलेक्ट हो गई है (' + f.name + ')';
+    };
+    tempImg.src = ev.target.result;
+  };
+  reader.readAsDataURL(f);
+}
+
+async function scanNow() {
+  const phone = document.getElementById('uPhone').value.trim();
+  if (phone.length < 10) { alert('कृपया अपना 10 अंकों का मोबाइल नंबर डालें (3-Day Free Trial के लिए अनिवार्य)'); return; }
+
+  const rInput = document.getElementById('rHand');
+  const rRaw = rInput.files && rInput.files.item(0);
+  if (!rRaw && !hdRightBlob) { alert('कृपया पहले दाहिने हाथ की फोटो चुनें!'); return; }
+
+  const tVal = document.getElementById('topic').value;
+  const topic = tVal === 'CUSTOM' ? document.getElementById('cInput').value.trim() : tVal;
+
+  document.getElementById('btn').disabled = true;
+  document.getElementById('loader').style.display = 'block';
+  document.getElementById('results').style.display = 'none';
+
+  try {
+    const accRes = await fetch('/api/check-access', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ phone: phone })
+    });
+    const accData = await accRes.json();
+    unlocked = accData.unlocked;
+
+    const statusEl = document.getElementById('planStatus');
+    statusEl.style.display = 'inline-block';
+    statusEl.innerText = unlocked
+      ? '✅ एक्टिव प्लान: ' + accData.plan + ' (वैधता: ' + accData.expires_at + ')'
+      : '🔒 3-Day Trial समाप्त — पूरी रिपोर्ट देखने के लिए नीचे प्लान चुनें';
+
+    const fd = new FormData();
+    fd.append('gender', document.getElementById('gender').value);
+    fd.append('question_topic', topic || 'Sampurna Bhavishyafal');
+    if (hdRightBlob) fd.append('right_hand', hdRightBlob, 'right_hand.jpg');
+    else fd.append('right_hand', rRaw);
+
+    const lInput = document.getElementById('lHand');
+    const lRaw = lInput.files && lInput.files.item(0);
+    if (hdLeftBlob) fd.append('left_hand', hdLeftBlob, 'left_hand.jpg');
+    else if (lRaw) fd.append('left_hand', lRaw);
+
+    const res = await fetch('/bhavishyafal', { method: 'POST', body: fd });
+    const data = await res.json();
+    report = data.hastrekha_report || data;
+    if (report.error) { alert('सर्वर लोड: ' + report.details); return; }
+
+    saveReportHistory(document.getElementById('uName').value.trim(), topic || 'Sampurna Bhavishyafal', report, unlocked);
+    document.getElementById('paywall').style.display = unlocked ? 'none' : 'block';
+    drawCards();
+    document.getElementById('results').style.display = 'block';
+    document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+  } catch (e) {
+    alert('त्रुटि: ' + e.message);
+  } finally {
+    document.getElementById('btn').disabled = false;
+    document.getElementById('loader').style.display = 'none';
+  }
+}
+
+function setLang(l) { lang = l; drawCards(); }
+
+function drawCards() {
+  if (!report) return;
+  const list = [
+    ['swabhav_vyavahar_aur_antarmann', '🧠 1. स्वभाव, व्यवहार और अंतर्मन', '🧠 1. Nature & Inner Self'],
+    ['haath_ki_pehchan_aur_tulna', '✋ 2. हाथ की पहचान और तुलना', '✋ 2. Palm Comparison'],
+    ['sabse_badi_samasya_aur_bar_bar_hone_wali_rukawat', '⚠️ 3. सबसे बड़ी समस्या और रुकावट', '⚠️ 3. Core Challenges'],
+    ['rekhaon_ka_sukshma_nirikshan_achha_aur_bura', '🔍 4. रेखाओं का सूक्ष्म निरीक्षण', '🔍 4. Micro-Analysis of Lines'],
+    ['sanyukt_bhavishyafal_aur_umra_ganana', '⏳ 5. संयुक्त भविष्यफल और उम्र गणना', '⏳ 5. Prediction & Age Timeline'],
+    ['upay_aur_karm_sudhar', '🕉️ 6. शास्त्रीय उपाय, अनुष्ठान और कर्म सुधार', '🕉️ 6. Vedic Remedies & Rituals']
+  ];
+  const box = document.getElementById('cards');
+  box.innerHTML = '';
+  list.forEach(([k, hiT, enT], i) => {
+    if (!report[k]) return;
+    const txt = typeof report[k] === 'string' ? report[k] : (lang === 'hi' ? (report[k].hindi || report[k].hi) : (report[k].english || report[k].en));
+    const cls = (!unlocked && i >= 2) ? 'blur' : '';
+    const lock = (!unlocked && i >= 2) ? ' 🔒' : '';
+    box.innerHTML += '<div class="res-card"><h3>' + (lang==='hi'?hiT:enT) + lock + '</h3><div class="' + cls + '">' + txt + '</div></div>';
+  });
+}
+
+async function buyPlan(planId) {
+  const phone = document.getElementById('uPhone').value.trim();
+  const name = document.getElementById('uName').value.trim() || 'Vedic User';
+  try {
+    const orderRes = await fetch('/api/create-order', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ phone: phone, plan_id: planId })
+    });
+    const orderData = await orderRes.json();
+
+    const options = {
+      key: orderData.key_id,
+      amount: orderData.amount,
+      currency: 'INR',
+      name: 'Vedic Palm Scanner',
+      description: orderData.plan_name,
+      order_id: orderData.order_id,
+      prefill: { name: name, contact: phone },
+      theme: { color: '#f5b942' },
+      handler: async function (response) {
+        const verRes = await fetch('/api/verify-payment', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            phone: phone,
+            plan_id: planId,
+            razorpay_order_id: response.razorpay_order_id,
+            razorpay_payment_id: response.razorpay_payment_id,
+            razorpay_signature: response.razorpay_signature
+          })
+        });
+        if (verRes.ok) {
+          unlocked = true;
+          document.getElementById('paywall').style.display = 'none';
+          drawCards();
+          alert('🎉 पेमेंट सफल! आपका ' + orderData.plan_name + ' अनलॉक हो गया है।');
+        }
+      }
+    };
+    const rzp = new Razorpay(options);
+    rzp.open();
+  } catch (err) {
+    alert('पेमेंट शुरू करने में त्रुटि: ' + err.message);
+  }
+}
+
+function applyCpn() {
+  const c = document.getElementById('cpnCode').value.trim().toUpperCase();
+  if (c === 'VEDIC100') {
+    unlocked = true;
+    document.getElementById('paywall').style.display = 'none';
+    drawCards();
+    alert('🎉 एडमिन कूपन लागू! पूरी रिपोर्ट और PDF अनलॉक है।');
+  } else { alert('अमान्य कूपन कोड!'); }
+}
+
+function downloadPDF() {
+  if (!unlocked) { alert('🔒 PDF डाउनलोड करने के लिए पहले नीचे दिए गए प्लान से अनलॉक करें!'); return; }
+  window.print();
+}
+
+function shareWA() {
+  const rawName = document.getElementById('uName').value.trim();
+  const displayName = rawName ? `${rawName} ने` : 'मैंने';
+  const summary = report && report.swabhav_vyavahar_aur_antarmann
+    ? (typeof report.swabhav_vyavahar_aur_antarmann === 'string' ? report.swabhav_vyavahar_aur_antarmann : report.swabhav_vyavahar_aur_antarmann.hindi).slice(0, 180)
+    : '';
+  const text = `🔮 *Vedic Palm Scanner* पर ${displayName} अपनी हथेली की रेखाओं का विश्लेषण करवाया!\n\n✨ *मुख्य झलक:* ${summary}...\n\nआप भी 3 दिन के *Free Trial* में अपनी हथेली स्कैन करें:\n${window.location.origin}`;
+  window.open('https://' + 'api.whatsapp.com' + '/send?text=' + encodeURIComponent(text), '_blank');
+}
+
+function saveReportHistory(uName, topic, reportData, isUnlocked) {
+  try {
+    let hist = JSON.parse(localStorage.getItem('vedic_palm_history') || '[]');
+    const newItem = {
+      id: Date.now(),
+      date: new Date().toLocaleString('hi-IN', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' }),
+      name: uName || 'उपयोगकर्ता',
+      topic: topic || 'संपूर्ण भविष्यफल',
+      report: reportData,
+      unlocked: isUnlocked
+    };
+    hist.unshift(newItem);
+    if (hist.length > 10) hist = hist.slice(0, 10);
+    localStorage.setItem('vedic_palm_history', JSON.stringify(hist));
+    renderHistory();
+  } catch (e) {}
+}
+
+function renderHistory() {
+  const hist = JSON.parse(localStorage.getItem('vedic_palm_history') || '[]');
+  const sec = document.getElementById('historySection');
+  const list = document.getElementById('historyList');
+  if (!sec || !list) return;
+  if (hist.length === 0) { sec.style.display = 'none'; return; }
+  sec.style.display = 'block';
+  list.innerHTML = '';
+  hist.forEach((item, idx) => {
+    list.innerHTML += '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;background:#0c091a;border:1px solid #382f63;padding:10px 14px;border-radius:9px;margin-bottom:8px;"><div><div style="color:#f3f1f8;font-weight:bold;font-size:14px;">🔮 ' + item.name + ' — ' + item.topic + '</div><div style="color:#a89fc7;font-size:12px;">🕒 ' + item.date + '</div></div><button class="btn-sm" onclick="openHistoryItem(' + idx + ')">📖 रिपोर्ट देखें</button></div>';
+  });
+}
+
+function openHistoryItem(idx) {
+  const hist = JSON.parse(localStorage.getItem('vedic_palm_history') || '[]');
+  const item = hist[idx];
+  if (!item) return;
+  report = item.report;
+  unlocked = item.unlocked;
+  document.getElementById('paywall').style.display = unlocked ? 'none' : 'block';
+  drawCards();
+  document.getElementById('results').style.display = 'block';
+  document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+}
+
+window.addEventListener('DOMContentLoaded', renderHistory);
+</script>
+</body>
+</html>
