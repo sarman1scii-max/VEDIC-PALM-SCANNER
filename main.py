@@ -57,19 +57,28 @@ ALL_PDF_KNOWLEDGE = load_all_pdfs_from_folder()
 def prepare_image_for_gemini(contents: bytes, filename: str):
     np_arr = np.frombuffer(contents, np.uint8)
     img = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
+
     if img is None:
+        try:
+            import pillow_heif
+            heif_file = pillow_heif.read_heif(contents)
+            pil_img = Image.frombytes(
+                heif_file.mode, heif_file.size, heif_file.data, "raw"
+            ).convert("RGB")
+            img = cv2.cvtColor(np.array(pil_img), cv2.COLOR_RGB2BGR)
+        except Exception:
             try:
                 pil_img = Image.open(io.BytesIO(contents)).convert("RGB")
-            img = cv2.cvtColor(np.array(pil_img), cv2.COLOR_RGB2BGR)
+                img = cv2.cvtColor(np.array(pil_img), cv2.COLOR_RGB2BGR)
             except Exception:
-                return None, None
+                pass
+
     if img is not None:
         orig_h, orig_w = img.shape[:2]
         target_w = 1280
         scale = target_w / orig_w
         resized = cv2.resize(img, (target_w, int(orig_h * scale)))
 
-        # High-precision CLAHE enhancement to reveal micro-lines, forks, and islands
         lab = cv2.cvtColor(resized, cv2.COLOR_BGR2LAB)
         l_channel, a_channel, b_channel = cv2.split(lab)
         clahe = cv2.createCLAHE(clipLimit=2.3, tileGridSize=(8, 8))
@@ -85,9 +94,11 @@ def prepare_image_for_gemini(contents: bytes, filename: str):
     ext = filename.lower()
     if ext.endswith(".heic") or ext.endswith(".heif"):
         return contents, "image/heic"
-
-    return None, None
-
+    if ext.endswith(".webp"):
+        return contents, "image/webp"
+    if ext.endswith(".png"):
+        return contents, "image/png"
+    return contents, "image/jpeg"
 
 @app.post("/bhavishyafal")
 async def get_master_bhavishyafal(
