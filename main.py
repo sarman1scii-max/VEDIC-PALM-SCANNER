@@ -218,8 +218,15 @@ async def get_master_bhavishyafal(
         }}
     }}
     """
+strict_palm_rules = """
+CRITICAL PALMISTRY ANALYSIS RULES (STRICT):
+1. PHOTO FIRST (VISUAL EVIDENCE ONLY): First carefully inspect the uploaded palm photo. Mention ONLY lines (Life, Head, Heart, Fate, Sun), mounts (Venus, Jupiter, Saturn, Sun, Mercury, Mars), and marks (triangle, square, star, cross, island, grille, dot/mole) that are actually visible in the photo. If a mark or line is unclear or not visible, do NOT invent or force it.
+2. DIFFERENT RESULT FOR EVERY HAND: Every person's palm is different. Never repeat the exact same generic template, fixed age range, or identical problem/remedy across different users. Tailor every field to the specific hand in the photo and the loaded PDF notes.
+3. USE LOADED PDF RULES: Match the visible features of this specific photo with the rules from the loaded palm notes (mounts, lines, marks, timing, and remedies).
+"""
 
-    content_parts.append(prompt)
+prompt = prompt + "\n" + strict_palm_rules
+content_parts.append(prompt)
 
     prediction_result = None
     last_error = ""
