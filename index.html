@@ -30,6 +30,65 @@ select, input { width:100%; padding:11px; border-radius:8px; border:1px solid #3
 .btn-wa:hover { background:#25D366; color:#000; }
 .res-card { background:#141026; border-left:4px solid #f5b942; padding:20px; margin-bottom:15px; border-radius:10px; white-space:pre-line; line-height:1.7; }
 .res-card h3 { color:#f5b942; margin:0 0 10px 0; }
+  /* PDF डिज़ाइन सुधार और साइड में नाम व नंबर */
+.pdf-side-badge {
+  display: none;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 15mm 18mm 15mm 14mm;
+  }
+
+  /* हर बॉक्स और हेडिंग को दो पेजों के बीच कटने से रोकना */
+  .res-card, .card, div, h1, h2, h3, h4, p {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* PDF का बैकग्राउंड सफेद और कार्ड्स को प्रीमियम लुक देना */
+  body {
+    background: #ffffff !important;
+    color: #1f2937 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .res-card {
+    background: #fffbeb !important;
+    border: 1px solid #f59e0b !important;
+    border-left: 5px solid #d97706 !important;
+    color: #111827 !important;
+    margin-bottom: 14px !important;
+    padding: 16px !important;
+    border-radius: 8px !important;
+  }
+
+  /* PDF के हर पेज की साइड (दाईं तरफ) में नाम और नंबर */
+  .pdf-side-badge {
+    display: block !important;
+    position: fixed;
+    right: -65px;
+    top: 48%;
+    transform: rotate(90deg);
+    font-size: 12px;
+    font-weight: bold;
+    color: #92400e;
+    background: #fef3c7;
+    padding: 5px 14px;
+    border: 1px solid #f59e0b;
+    border-radius: 6px;
+    letter-spacing: 0.5px;
+    z-index: 9999;
+  }
+
+  /* प्रिंट में अनावश्यक बटन छिपाना */
+  button, .btn-main, .btn-sm, .upbox {
+    display: none !important;
+  }
+}
+
 .blur { filter:blur(6px); user-select:none; pointer-events:none; opacity:0.5; }
 .paywall { background:#1b1436; border:2px solid #f5b942; border-radius:14px; padding:25px 15px; text-align:center; margin:20px 0; }
 .plans { display:grid; grid-template-columns:repeat(4, 1fr); gap:10px; margin:20px 0; }
@@ -448,5 +507,7 @@ function openHistoryItem(idx) {
 
 window.addEventListener('DOMContentLoaded', renderHistory);
 </script>
+  <div class="pdf-side-badge">आचार्य श्रवण व्यास | 📞 +91 79993 96575</div>
+
 </body>
 </html>
