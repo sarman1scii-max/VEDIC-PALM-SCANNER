@@ -448,8 +448,19 @@ function applyCpn() {
 }
 
 function downloadPDF() {
-  if (!unlocked) { alert('🔒 PDF डाउनलोड करने के लिए पहले नीचे दिए गए प्लान से अनलॉक करें!'); return; }
-  window.print();
+  if (!unlocked) { 
+    alert('🔒 PDF डाउनलोड करने के लिए पहले नीचे दिए गए प्लान से अनलॉक करें।'); 
+    return; 
+  }
+  const ua = navigator.userAgent || navigator.vendor || window.opera;
+  const isInApp = /FBAN|FBAV|Instagram|WhatsApp|wv/i.test(ua);
+  if (isInApp) {
+    alert('📱 WhatsApp या ऐप के अंदर PDF डाउनलोड सपोर्ट नहीं करता। कृपया ऊपर दाईं तरफ तीन बिंदुओं (⋮) पर क्लिक करके "Open in Chrome" चुनें और फिर PDF डाउनलोड करें।');
+    return;
+  }
+  setTimeout(function() {
+    window.print();
+  }, 300);
 }
 
 function shareWA() {
