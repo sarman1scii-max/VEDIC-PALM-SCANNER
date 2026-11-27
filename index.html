@@ -30,79 +30,6 @@ select, input { width:100%; padding:11px; border-radius:8px; border:1px solid #3
 .btn-wa:hover { background:#25D366; color:#000; }
 .res-card { background:#141026; border-left:4px solid #f5b942; padding:20px; margin-bottom:15px; border-radius:10px; white-space:pre-line; line-height:1.7; }
 .res-card h3 { color:#f5b942; margin:0 0 10px 0; }
-/* PDF का नया साफ-सुथरा डिज़ाइन */
-.pdf-side-badge { display: none; }
-
-@media print {
-  @page {
-    size: A4;
-    margin: 12mm 22mm 12mm 12mm;
-  }
-
-  body {
-    background: #ffffff !important;
-    color: #1f2937 !important;
-    padding: 0 !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-  }
-
-  .container {
-    max-width: 100% !important;
-    padding-right: 12px !important;
-  }
-
-  header {
-    padding: 10px 0 !important;
-    margin-bottom: 14px !important;
-    border-bottom: 2px solid #d97706 !important;
-  }
-
-  header h1 {
-    color: #b45309 !important;
-    font-size: 24px !important;
-  }
-  /* केवल एक-एक कार्ड को कटने से बचाना, पूरे पेज को नहीं */
-  .res-card {
-    break-inside: avoid !important;
-    page-break-inside: avoid !important;
-    background: #fffbeb !important;
-    border: 1px solid #f59e0b !important;
-    border-left: 5px solid #d97706 !important;
-    color: #111827 !important;
-    margin-bottom: 12px !important;
-    padding: 14px !important;
-    border-radius: 8px !important;
-  }
-
-  .res-card h3 {
-    color: #b45309 !important;
-    margin-bottom: 6px !important;
-  }
-
-  /* साइड में नाम और नंबर (टेक्स्ट से बिल्कुल दूर, दाईं मार्जिन में) */
-  .pdf-side-badge {
-    display: block !important;
-    position: fixed;
-    right: -85px;
-    top: 48%;
-    transform: rotate(90deg);
-    font-size: 11px;
-    font-weight: bold;
-    color: #92400e;
-    background: #fef3c7;
-    padding: 4px 12px;
-    border: 1px solid #f59e0b;
-    border-radius: 5px;
-    z-index: 9999;
-  }
-
-  /* प्रिंट में अनावश्यक बटन और बॉक्स छिपाना */
-  button, .btn-main, .btn-sm, .upbox, .card, #paywall, footer {
-    display: none !important;
-  }
-}
-
 .blur { filter:blur(6px); user-select:none; pointer-events:none; opacity:0.5; }
 .paywall { background:#1b1436; border:2px solid #f5b942; border-radius:14px; padding:25px 15px; text-align:center; margin:20px 0; }
 .plans { display:grid; grid-template-columns:repeat(4, 1fr); gap:10px; margin:20px 0; }
@@ -114,17 +41,31 @@ select, input { width:100%; padding:11px; border-radius:8px; border:1px solid #3
 .btn-plan { width:100%; padding:10px; background:#22c55e; color:#fff; font-weight:bold; border:none; border-radius:7px; cursor:pointer; }
 footer { text-align:center; margin-top:40px; padding:20px 0; border-top:1px solid rgba(245,185,66,0.25); font-size:13px; color:#a89fc7; }
 footer a { color:#f5b942; margin:0 10px; text-decoration:none; }
+.pdf-top-header { display: none; }
 @media print {
+  .pdf-top-header { display: block !important; text-align: right; font-size: 13px; font-weight: bold; color: #000; border-bottom: 1px solid #999; padding-bottom: 5px; margin-bottom: 10px; }
   body { background:#fff !important; color:#000 !important; }
-  .card, .bar, .paywall, #loader, #historySection, footer { display:none !important; }
-  .res-card { background:#fff !important; color:#000 !important; border:1px solid #ccc; border-left:4px solid #000; }
+  .card, .bar, .paywall, #loader, #historySection, footer, button, .btn-main, .btn-sm { display:none !important; }
+  .res-card { background:#fff !important; color:#000 !important; border:1px solid #ccc; border-left:4px solid #000; break-inside: avoid !important; page-break-inside: avoid !important; }
   .res-card h3 { color:#000 !important; }
   .blur { filter:none !important; opacity:1 !important; }
 }
+.pdf-top-header { display: none; }
+@media print {
+  .pdf-top-header { display: block !important; text-align: right; font-size: 13px; font-weight: bold; color: #000; border-bottom: 1px solid #999; padding-bottom: 5px; margin-bottom: 10px; }
+  body { background:#fff !important; color:#000 !important; }
+  .card, .bar, .paywall, #loader, #historySection, footer, button, .btn-main, .btn-sm { display:none !important; }
+  .res-card { background:#fff !important; color:#000 !important; border:1px solid #ccc; border-left:4px solid #000; break-inside: avoid !important; page-break-inside: avoid !important; }
+  .res-card h3 { color:#000 !important; }
+  .blur { filter:none !important; opacity:1 !important; }
+}
+
 </style>
 </head>
 <body>
 <div class="container">
+  <div class="pdf-top-header">आचार्य श्रवण व्यास | 📞 +91 79993 96575</div>
+
 <header>
   <div class="badge">🎁 नए उपयोगकर्ताओं के लिए 3 दिन का निःशुल्क ट्रायल (3-Day Free Trial)</div>
   <h1>🔮 Vedic Palm Scanner</h1>
